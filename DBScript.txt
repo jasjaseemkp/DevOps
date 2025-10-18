@@ -1,0 +1,48 @@
+AWS Database Services
+https://aws.amazon.com/products/databases/
+
+
+// To install mysql
+sudo su
+yum install -y mysql
+
+//Installing mysql on Amazon Linux 2023
+sudo su
+dnf -y localinstall https://dev.mysql.com/get/mysql80-community-release-el9-4.noarch.rpm
+dnf -y install mysql mysql-community-client
+dnf install mysql-community-server
+
+
+RDS Script
+// provide endpoint for your database and use the username and password you have set.
+
+mysql -h <host-name> -P 3306 -u <user-name> -p
+
+//To get the list of databases
+SHOW Databases; 
+
+// To create a new database
+CREATE Database <Database-name>;
+
+//To use a particular database to execute your operations
+Use <Database-name>;
+
+CREATE TABLE IF NOT EXISTS book (
+    book_id INT AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    author VARCHAR(50),
+    publish_date DATE,
+    description VARCHAR(100),
+	PRIMARY KEY (book_id)
+);	
+
+INSERT INTO book(title,author) VALUES
+    ('Learn from AWS' , 'John Smith'),
+	('MY SQL book' , 'John Mary'),
+	('Dummies for Oracle' , 'Robin Smith');
+	
+//Commands to download supporting code in Cloud9
+curl -SL https://s3.amazonaws.com/ddb-deep-dive/dynamodb.tar | tar -xv
+
+// To install a library
+pip install --user boto3

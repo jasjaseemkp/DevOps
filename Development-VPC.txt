@@ -1,0 +1,103 @@
+1. Create The Custom VPC Development
+
+2. Create 3 Subnets (Public1,Public2,Private1)
+
+3. Auto Assign Enable Public V4 For Public subnets(select public subnets --> Actions --> Edit subnet settings --> Enable it)
+
+5. Create Internet Gateway --> Attach to VPC
+
+6. Create Route Table --> Edit Route --> Internet Gateway and save changes --> Edit Subnet Association (Give Public1 and 2)
+
+7. Create NAT Gateway --> (You can choose any of the Public subnet in it )
+
+8. Create Route Table For NAT --> Edit Route --> NAT Gateway Attach and save changes --> Edit Subnet Association (Give Private1)
+
+7. Create Instances For ALL Subnets (Amazon Linux 2 , Ubuntu , Red Hat) (NOTE: When we create private instance don't forget to create keypair)
+
+8. Choose Public1 Instance and Connect ( Is That Amazon Linux 2 Do all below This )
+
+For Installing Webserver In Amazon Linux 2:
+
+The Steps Are:
+
+	1. sudo yum install httpd -y
+
+	2. sudo systemctl start httpd
+
+	3. sudo systemctl enable httpd
+
+	4. sudo systemctl status httpd
+
+	5. sudo mkdir /var/www/mywebsite
+
+	6. sudo chown -R apache:apache /var/www/mywebsite
+
+	7. sudo chmod -R 755 /var/www/mywebsite
+
+	8. cd /etc/httpd/conf.d/
+
+	9. sudo rm -rf welcome.conf
+
+	10. sudo nano /etc/httpd/conf.d/mywebsite.conf
+
+	11. Paste This :    
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@mywebsite.com
+    DocumentRoot /var/www/mywebsite
+    ServerName mywebsite.com
+    ServerAlias www.mywebsite.com
+
+    <Directory /var/www/mywebsite>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/httpd/mywebsite-error.log
+    CustomLog /var/log/httpd/mywebsite-access.log combined
+</VirtualHost>
+
+
+	12. echo "<h1>Private IP: $(hostname -I)</h1>" | sudo tee /var/www/mywebsite/index.html
+
+
+	13. sudo systemctl restart httpd
+
+	14. Paste The Public Ip In Browser
+
+
+9. Choose The Public2 and connect (if it ubuntu then do the below steps)
+
+
+The steps are :
+
+	1. sudo apt update
+
+	2. sudo apt-get install apache2 -y 
+	
+	3. cd /var/www/html
+
+	4. sudo rm index.html
+
+	5. echo "<h1>Private IP: $(hostname -I)</h1>" | sudo tee /var/www/html/index.html
+ 	
+	6. ls (check that there index.html file for confirmation)
+
+	7. copy the public ip and paste in browser
+
+10. Choose The Public Instance When we used to create NAT gateway(That Exact One Okayyy --> May be it will public1 or public2)
+
+11. connect that particular public instance --> nano <keypairname of the private instance>
+
+12. goto instances connect private1 using ssh client --> copy the chmod command and paste in that public instance --> After that ssh command also)
+
+13. Now The Private1 is connected after that do the same when we did in Amazon Linux 2 (commands in above mentioned) 
+
+14. After that goto target groups --> create --> After given the Target Group Name In protocol choose (TCP)
+
+15. Next --> Select The Instances and pending as below --> create the TG
+
+16. Create Network Loadbalancer --> After that copy the DNS Of NLB and paste in 3 different browser --> (Chrome,Microsoft browser,incognito mode)
+
+17. We can see the outputs of each and see the different ip also
+

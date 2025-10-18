@@ -1,0 +1,86 @@
+1.Go to IAM --> Users(Dev and Ops) --> Create Users without giving groups or policies
+
+2.Go to User Groups --> Create a group (DevOps) --> Add That Two Users 
+
+3.Go to Policy --> Create Policy --> choose Policy editor as visual --> In Select Services first choose --> IAM
+
+4.Search these policies and tick each permissions :
+
+	1. CreateAccessKey
+
+	2. DeleteAccessKey
+
+	3. ListAccessKeys
+
+5.Then In Below You can see Add Permissions --> select services as EC2
+
+6.Search these policies and tick each permissions :
+
+	1. AuthorizeSecurityGroupIngress
+
+	2. CreateKeyPair
+
+	3. CreateSecurityGroup
+	
+	4.DeleteKeyPair
+
+	5.DeleteSecurityGroup
+
+	6.ImportKeyPair
+
+	7.ModifySecurityGroupRules
+
+	8.RunInstances
+
+	9.StartInstances
+
+	10.StopInstances
+
+	11.DescribeImages
+
+	12.DescribeInstances
+
+	13.DescribeInstanceTypes
+
+	14.DescribeInternetGateways
+
+	15.DescribeKeyPairs
+
+	16.DescribeRouteTables
+
+	17.DescribeSecurityGroups
+
+	18.DescribeSubnets
+
+	19.DescribeVolumes
+
+	20.DescribeVpcs
+
+	21.CreateTags
+
+7.Then In Below You can see Add Permissions --> select services as EC2 Instance Connect
+
+8.Search these policies and tick each permissions :
+
+	1. OpenTunnel
+
+	2.SendSerialConsoleSSHPublicKey
+
+	3.SendSSHPublicKey
+
+9.Then Next --> Give Policy Name --> Create Policy
+
+10.Go back to User groups --> open (DevOps) --> Scroll You can See Pemissions --> Add Policy --> Add Inline Policy --> Give the previously created policy and save
+
+11.Open Another browser --> Go to  AWS MANAGEMENT CONSOLE --> Sign in as user --> After Sign in Go to profile of that particular user --> In that you can see Security Credentials --> open it --> scroll you can see Create Access Key --> create it
+
+12.After That Goto EC2 Instance --> Launch any Instance --> Then Connect Using EC2 Instance Connect --> If it is connected Then The Exercise is completed.
+
+
+
+
+
+
+
+
+

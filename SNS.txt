@@ -1,0 +1,11 @@
+{
+      "Sid": "SNS_Publish",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": [
+        "SNS:Publish"
+      ],
+      "Resource": "<SNS-Topic-ARN>"
+    },

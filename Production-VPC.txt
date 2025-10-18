@@ -1,0 +1,39 @@
+1. Create Custom VPC (Production-VPC) --> Create 2 public subnet and 1 private Subnet --> choose each public subnet and actions --> Edit subnet settings --> Enable Auto Assign IPV4
+
+2. Create Internet Gateway --> Attach to VPC 
+
+3. Create Route Table --> Edit route --> give internet gateway --> Edit subnet association --> Add Public1 and 2
+
+4. Create NAT Gateway --> Give any of the public that we want to launch private --> After that create route table --> Edit route --> give NAT gateway --> Edit subnet association --> Add Private1
+
+5. goto RDS --> create database --> Engine: MySQL --> Give production vpc --> confirm that we want to give same Availability Zone(like ap-south-1c) as Private subnet --> create new security group  --> Goto Additional Configuration --> Give PRT in Initial database name --> Then Create
+
+6. Goto EC2 --> Instances --> Launch all public and private instances 
+
+7. Choose Which Public Instance do you Use while creating NAT gateway --> Connect That Public Instance --> In other tab you want to connect the private Instance --> choose ssh-client --> Then in public instance we want to connect the private instance For That we want to create a same keypair file in public instance --> nano <keypair> --> copy paste the keypair --> Ctrl S and Ctrl X --> Then Give chmod command after that give ssh command.
+
+8. When we connect private instance then you want give the following commands below:
+
+	1. sudo apt update -y
+
+	2. sudo apt-get install mysql-client -y
+
+9. Goto RDS --> Select the database --> Scroll down --> There you can see connectivity option --> Compute resource: select connect to ec2 compute device --> select the private instance.
+
+10. Then go back to ec2 instance connect --> give command: 
+
+	1. mysql -h <give your rds endpoint> -u <username> -p<password> 
+
+11. Now it is connected to MySQL
+
+	1. show databases;
+
+	2. use PRT;
+
+	3. CREATE TABLE AWS(NAME varchar(20),ID int);
+
+	4. INSERT INTO AWS(NAME,ID) VALUE ('JASEEM',101),('MUHAMMED',102);
+
+	5. SELECT * FROM AWS;
+
+12. You got The Output

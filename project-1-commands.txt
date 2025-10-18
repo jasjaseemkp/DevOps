@@ -1,0 +1,35 @@
+commands for ubuntu ami:
+
+sudo apt-get update
+sudo apt-get install apache2 -y
+cd /var/www/html
+sudo rm index.html
+sudo nano index.php
+copy and paste the php code
+ctrl+s
+ctrl+x
+
+commands for RDS:
+sudo apt install mysql-server -y
+sudo apt install mysql-client -y
+sudo mysql -h "mysql-endpoint" -u "username" -p
+password
+show databases;
+use intel;
+create table data(firstname varchar(30), email varchar(30));
+insert into data values("aws","aws@gmail.com");
+select * from data;
+
+commands for libraries:
+
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt install php5.6 mysql-client php5.6-mysqli
+
+
+---------------------------------------------
+
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt install php5.6 mysql-client php5.6-mysqli
+
+
+

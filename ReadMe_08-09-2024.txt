@@ -1,0 +1,60 @@
+AWS Organization
+It is a service provided by AWS thats allows users to centrally manage multiple AWS
+accounts within an organization. 
+1. Centralized Management:
+2. Consolidated Billing
+3. Service Control Policies (SCPs): allows you to define permission for your accounts.
+4. Organizational Unit (OUs)
+
+Use cases
+1. Multi-account setups
+2. Centralized Governance
+3. Cost management
+
+Route 53
+Cloud DNS web service offerred by AWS. It is designed to route end user requests to internet
+applications, websites or any other service. It also allows you to register domain name.
+
+1. Domain name registration
+2. DNS Management: translates human-readable domain names into IP addresses
+3. Traffic Routing Policy: https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
+
+Transit Gateway: 
+https://docs.aws.amazon.com/vpc/latest/tgw/working-with-transit-gateways.html#transit-gateway-share
+It is a centralized hub for networking. It helps you connect multiple
+                 Amazon Virtual Private Cloud and on-premises networks through a central hub.
+				 
+1. Centralized hub for networking
+2. Simplified VPC connectivity
+3. Inter region peering
+4. Hybrid Cloud Connectivity
+
+
+Amazon Fsx: managed service from AWS that provides scalable file systems for variety of user
+            cases such as storage for databases, big data analytics, machine learning, content
+			management
+1. Amazon Fsx for windows File server: Suitable for windows based workloads
+2. Amazon FSx for Lusture: High performance file system optimized for compute intensive workloads.
+                           It is often used for HPC workloads
+3. Amazon Fsx for NetApp ONTAP: widely used in on-premises data centers for storing and managing
+                                data
+4. Fsx for OpenZFS: Advanced features like data integrity checking, snapshots and efficient data 
+                    compression
+
+Amazon EBS: Persistent Block store
+https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html
+
+
+AWS Global Accelerator: It is a network service that improves the availability and performance of
+                        of your applications for global users
+1. Global Traffic Distribution
+2. Static Anycast Ips: Fixed entrypoint for your applications
+3. Multi region failover and Availability
+ 
+
+EFA vs ENA vs ENI: Are used in context of EC2
+ENA : Elastic Network Adapter: Default high-performance network interface used by EC2 instances
+      for providing enhanced networking features. Supports network speed upto 10gbps
+EFA: Elastic Fabric Adapter: Designed for Machine learning workloads. It provides low latency 
+     networking and enhanced support for parallel computing
+ENI: Elastic Network Interface: Virtual network interface. provides standard network capabilities.
